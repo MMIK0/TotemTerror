@@ -154,10 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  gravity: -13
-  antiBump: 4.5
-  jumpForce: 30
-  airTime: 0
+  gravity: 10
+  jumpForce: 1
+  airTime: 0.4
   playerCamera: {fileID: 3490081292924991164}
   mouseSens: 3.5
 --- !u!1 &3490081292924991105
@@ -201,7 +200,7 @@ Camera:
   m_GameObject: {fileID: 3490081292924991105}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2

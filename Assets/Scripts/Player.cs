@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
     public float speed;
     public float gravity = -13f;
     public float jumpForce = 30f;
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
     bool isJumping = false;
     bool groundState = false;
     public float moveSpeed { get; private set; }
+    float maxSpeed = 100f;
 
     //Camera controls
     public Transform playerCamera;
@@ -30,6 +33,11 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this);
+
         charControl = GetComponent<CharacterController>();
     }
 
@@ -47,6 +55,7 @@ public class Player : MonoBehaviour
 
     public void DefaultMovement()
     {
+
         Vector2 targetInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         targetInput.Normalize();
 
@@ -93,6 +102,9 @@ public class Player : MonoBehaviour
         }
 
         groundState = charControl.isGrounded;
+
+        if (moveSpeed > maxSpeed)
+            moveSpeed = maxSpeed;
 
         Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * moveSpeed + Vector3.up * velocityY;
         charControl.Move(velocity *Time.deltaTime);
