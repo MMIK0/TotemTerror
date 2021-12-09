@@ -15,9 +15,10 @@ public class HitPoints : MonoBehaviour
     }
     public void TakeDamage(Damage damage)
     {
-        if (currentHitPoints <= 0 || damageImmunity == damage.damageType||damageImmunity ==Damage.DamageType.all)
+        if (currentHitPoints <= 0 || damageImmunity == damage.damageType||damageImmunity == Damage.DamageType.all)
             return;
         currentHitPoints -= damage.damage;
+        Debug.Log(currentHitPoints);
         if (currentHitPoints <= 0)
         {
             deathEvent.Invoke();

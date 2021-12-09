@@ -10,8 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5567064788967432944}
   - component: {fileID: 7533036181603965388}
+  - component: {fileID: 1471097488101782080}
   - component: {fileID: 5111732532388153200}
   - component: {fileID: 6909716444136875860}
+  - component: {fileID: 5589227572790109268}
+  - component: {fileID: 4983482961272070677}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -83,6 +86,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!136 &1471097488101782080
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959314059594109609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.16
+  m_Height: 3.5841002
+  m_Direction: 1
+  m_Center: {x: 0.097556375, y: 2.7734516, z: 0.0049200356}
 --- !u!95 &5111732532388153200
 Animator:
   serializedVersion: 3
@@ -115,3 +132,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStaticBB: 0
+--- !u!114 &5589227572790109268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959314059594109609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931b095c6775c9141aa9129c06eaacb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capsuleCollider: {fileID: 1471097488101782080}
+--- !u!114 &4983482961272070677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959314059594109609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c968227a646dd24c98c5bb7c0ba2c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+  damageType: 0

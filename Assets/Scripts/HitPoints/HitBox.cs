@@ -5,12 +5,25 @@ using UnityEngine;
 public class HitBox : MonoBehaviour
 {
     public HitPoints MainHitPoints;
-
-    private void OnCollisionEnter(Collision collision)
+    float immunityTimer;
+    float immunityDuration = 0.5f;
+    private void OnTriggerEnter(Collider collision)
     {
-        Damage damage = collision.collider.GetComponent<Damage>();
+        Damage damage = collision.gameObject.GetComponent<Damage>();
         if (!damage)
             return;
-        MainHitPoints.TakeDamage(damage);
+
+        if(immunityTimer <= 0)
+        {
+            MainHitPoints.TakeDamage(damage);
+            immunityTimer = immunityDuration;
+        }
     }
+
+    private void Update()
+    {
+        if (immunityTimer > 0)
+            immunityTimer -= Time.deltaTime;
+    }
+
 }
