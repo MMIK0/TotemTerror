@@ -15,10 +15,14 @@ public class Shoot : MonoBehaviour
             Fire();
         }
     }
-    void Fire()
+    public void Fire()
     {
         Projectile projectile = bullet.GetPooledObject().GetComponent<Projectile>();
         projectile.transform.position = projectileSpawnPoint.position;
         projectile.rBody.velocity = projectileSpawnPoint.forward * speed;
+    }
+    public void SetSpeed(float s)
+    {
+        speed = s;
     }
 }
