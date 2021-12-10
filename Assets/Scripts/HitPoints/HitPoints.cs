@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class HitPoints : MonoBehaviour
 {
     public float maxHitPoints;
-    float currentHitPoints;
+    [HideInInspector]
+    public float currentHitPoints;
     public UnityEvent deathEvent;
     public Damage.DamageType damageImmunity;
     private void OnEnable()

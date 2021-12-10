@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3325573322472106028}
   - component: {fileID: 9164954111945348109}
   m_Layer: 9
-  m_Name: Bullet
+  m_Name: BulletEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8784568038135092140}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.0900002, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4609178966089819192
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc8f5d2a9fa1734685c9569c69e2afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: -21022
+  ID: 382074
   poolGrowthAmount: 6
 --- !u!114 &2522118374485235324
 MonoBehaviour:
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageType: 1
+  damageType: 2
 --- !u!114 &3325573322472106028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rBody: {fileID: 9164954111945348109}
   doNotDestroyOnHit: 0
+  lifeTime: 20
 --- !u!54 &9164954111945348109
 Rigidbody:
   m_ObjectHideFlags: 0
