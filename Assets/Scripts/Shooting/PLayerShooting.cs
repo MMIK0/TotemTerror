@@ -27,7 +27,6 @@ public class PLayerShooting : Shoot
         if (rotationAmount < cylinderRotationPerShot)
         {
             float rotation = cylinderRotationPerShot / shotCooldown;
-            Debug.Log(rotationAmount);
             rotationAmount += rotation* Time.deltaTime*2;
             if(rotationAmount>cylinderRotationPerShot)
                 cylinder.transform.Rotate(new Vector3(0, 0, -rotationAmount/cylinderRotationPerShot));

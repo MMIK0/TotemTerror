@@ -15,6 +15,7 @@ public class Shoot : MonoBehaviour
         Projectile projectile = bullet.GetPooledObject().GetComponent<Projectile>();
         projectile.transform.position = projectileSpawnPoint.position;
         projectile.rBody.velocity = projectileSpawnPoint.forward * speed;
+        projectile.transform.rotation = projectileSpawnPoint.rotation;
         if (animator)
         {
             animator.SetTrigger("Shoot");

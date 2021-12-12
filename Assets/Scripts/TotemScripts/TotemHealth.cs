@@ -7,6 +7,7 @@ public class TotemHealth : MonoBehaviour
 {
     float MaxHealth = 1f;
     HitPoints[] hitPoints;
+    public bool Inactive = true;
     public List<HitPointEvent> hitPointEvents = new List<HitPointEvent>();
     private void OnEnable()
     {
@@ -18,10 +19,13 @@ public class TotemHealth : MonoBehaviour
     }
     private void Update()
     {
+        if (Inactive)
+            return;
         float currentHealth = 0f;
         foreach (HitPoints hp in hitPoints)
             currentHealth += hp.currentHitPoints;
         Debug.Log("HP: " + currentHealth + "/" + MaxHealth);
+        HealthBar.instance.UpdateHealthbar(currentHealth, MaxHealth);
         foreach(HitPointEvent hitPointEvent in hitPointEvents)
         {
             hitPointEvent.TriggerCheck(MaxHealth, currentHealth);
@@ -38,12 +42,13 @@ public class TotemHealth : MonoBehaviour
         {
             if (hasBeenTriggered)
                 return;
-            if (currentHp / maxHp * 100 < HpTriggerPrecentage)
+            if (currentHp / maxHp * 100 <= HpTriggerPrecentage || currentHp==0)
                 hpEvent.Invoke();
         }
     }
     public void ActivateTotem()
     {
+        Inactive = false;
         TotemScrip[] t = GetComponentsInChildren<TotemScrip>();
         foreach (TotemScrip totemScrip in t)
             totemScrip.Activate();

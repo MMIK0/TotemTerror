@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public PooledBehaviour spawnOnImpact;
     public Rigidbody rBody;
     public bool doNotDestroyOnHit;
     public float lifeTime = 20f;
     private float lifeDuration=0;
+    private void OnEnable()
+    {
+        lifeDuration = 0;
+    }
     private void Update()
     {
         lifeDuration += Time.deltaTime;
         if (lifeDuration >= lifeTime)
         {
-            lifeDuration = 0;
             gameObject.SetActive(false);
         }
     }
@@ -28,6 +32,8 @@ public class Projectile : MonoBehaviour
             if (damage.damageType == ownDamage.damageType && damage.damageType != Damage.DamageType.all)
                 return;
         }
+        if (spawnOnImpact)
+            spawnOnImpact.GetPooledObject(transform.position);
         gameObject.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
@@ -41,6 +47,8 @@ public class Projectile : MonoBehaviour
         }
         if (doNotDestroyOnHit || other.gameObject.CompareTag("TrapTrigger"))
             return;
+        if (spawnOnImpact)
+            spawnOnImpact.GetPooledObject(transform.position);
         gameObject.SetActive(false);
     }
 }
