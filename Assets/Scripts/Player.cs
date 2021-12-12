@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     bool isJumping = false;
     bool groundState = false;
     public float moveSpeed { get; private set; }
-    float maxSpeed = 100f;
+    float maxSpeed = 20f;
 
     //Camera controls
     public Transform playerCamera;
@@ -66,6 +66,9 @@ public class Player : MonoBehaviour
 
         velocityY -= gravity * Time.deltaTime;
 
+        if (Input.GetKeyDown(KeyCode.S))
+            bunnyHops = 0;
+
         if (Input.GetKeyDown(KeyCode.Space) && charControl.isGrounded)
         {
             isJumping = true;
@@ -88,7 +91,7 @@ public class Player : MonoBehaviour
 
         if(charControl.isGrounded != groundState && charControl.isGrounded)
         {
-            bunnyHopTimer = 0.3f;
+            bunnyHopTimer = 0.2f;
             moveSpeed = speed;
         }
 
@@ -97,7 +100,7 @@ public class Player : MonoBehaviour
             bunnyHopTimer -= Time.deltaTime;
             if (!charControl.isGrounded)
             {
-                moveSpeed = speed * bunnyHops;
+                moveSpeed = speed + bunnyHops;
             }
         }
 
