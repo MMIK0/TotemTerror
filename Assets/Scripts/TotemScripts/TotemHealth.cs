@@ -30,16 +30,22 @@ public class TotemHealth : MonoBehaviour
     [System.Serializable]
     public class HitPointEvent
     {
-        [Range(0,100)]
+        [Range(0, 100)]
         public float HpTriggerPrecentage;
         public UnityEvent hpEvent;
         bool hasBeenTriggered;
-        public void TriggerCheck(float maxHp,float currentHp)
+        public void TriggerCheck(float maxHp, float currentHp)
         {
             if (hasBeenTriggered)
                 return;
-            if(currentHp/maxHp*100<HpTriggerPrecentage)
+            if (currentHp / maxHp * 100 < HpTriggerPrecentage)
                 hpEvent.Invoke();
         }
+    }
+    public void ActivateTotem()
+    {
+        TotemScrip[] t = GetComponentsInChildren<TotemScrip>();
+        foreach (TotemScrip totemScrip in t)
+            totemScrip.Activate();
     }
 }

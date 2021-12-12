@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TotemShoot : MonoBehaviour
+public class TotemShoot : TotemScrip
 {
     public List<Shoot> shoot = new List<Shoot>();
     public float fireRate = 0.5f,rotaionSpeed=3;
+    public bool inactive = true;
+    
     float timeSinceShot;
     void Update()
     {
+        if (inactive)
+            return;
         transform.Rotate(new Vector3(0,rotaionSpeed * Time.deltaTime,0));
         timeSinceShot += Time.deltaTime;
         if (timeSinceShot >= fireRate)
@@ -30,5 +34,9 @@ public class TotemShoot : MonoBehaviour
     public void SetFireRate(float rate)
     {
         fireRate = rate;
+    }
+    public override void Activate()
+    {
+        inactive = false;
     }
 }

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TotemMovement : MonoBehaviour
+public class TotemMovement : TotemScrip
 {
     public float MoveSpeed=2,moveInterval=10;
     public float mBoundsWidth=10, mBoundsDeepth=10;
     float intervalTimer;
     Vector3 targetPos;
     Vector3 startPos;
+    public bool inactive = true;
     bool moving;
     private void OnEnable()
     {
@@ -16,6 +17,8 @@ public class TotemMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (inactive)
+            return;
         if (!moving)
             intervalTimer += Time.deltaTime;
         if (intervalTimer >= moveInterval)
@@ -41,5 +44,9 @@ public class TotemMovement : MonoBehaviour
         float xPos = Random.Range(-mBoundsWidth, mBoundsWidth);
         float zPos = Random.Range(-mBoundsDeepth, mBoundsDeepth);
         return new Vector3(xPos, 0, zPos)+startPos;
+    }
+    public override void Activate()
+    {
+        inactive = false;
     }
 }
