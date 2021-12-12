@@ -124,4 +124,32 @@ public class Player : MonoBehaviour
         playerCamera.localEulerAngles = Vector3.right * cameraPitch;
         transform.Rotate(Vector3.up * currentMouseDelta.x * mouseSens);
     }
+
+    public IEnumerator CameraShake(float duration, float magnitude)
+    {
+        Vector3 originalPos = playerCamera.transform.localPosition;
+
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(1f, 1.5f) * magnitude;
+
+            playerCamera.transform.localPosition = new Vector3(x, y, originalPos.z);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        playerCamera.transform.localPosition = originalPos;
+    }
+
+    public void Die()
+    {
+        transform.position = new Vector3(0f, 0f);
+        Debug.Log("We shouldve moved");
+    }
+
 }
