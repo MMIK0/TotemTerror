@@ -664,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3953229350383352217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.75, z: 0}
+  m_LocalPosition: {x: 0, y: 14.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4983347974844888693}
@@ -699,6 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 15
   currentHitPoints: 0
+  isPlayer: 0
   deathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -787,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 5817368739198707784, guid: ce9b85206226c8d45a479334d3dea8e2, type: 3}
-  speed: 10
+  speed: 12
   animator: {fileID: 0}
   projectileSpawnPoint: {fileID: 3953229350274563956}
 --- !u!1 &3953229350412572702
@@ -821,7 +822,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3953229350412572702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.89, z: 0}
+  m_LocalPosition: {x: 0, y: 10.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3953229351632238235}
@@ -857,6 +858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 15
   currentHitPoints: 0
+  isPlayer: 0
   deathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1018,6 +1020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 15
   currentHitPoints: 0
+  isPlayer: 0
   deathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1143,7 +1146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3953229351083341091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.38, z: 0}
+  m_LocalPosition: {x: 0, y: 5.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3970642294431677416}
@@ -1194,6 +1197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 15
   currentHitPoints: 0
+  isPlayer: 0
   deathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1360,7 +1364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3953229351580073558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 13.2, z: 0}
+  m_LocalPosition: {x: 0, y: 20.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3092216963578843338}
@@ -1425,6 +1429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 25
   currentHitPoints: 0
+  isPlayer: 0
   deathEvent:
     m_PersistentCalls:
       m_Calls:

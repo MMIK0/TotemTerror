@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 5951407728492329526}
   - component: {fileID: 5918456975298162457}
   m_Layer: 9
-  m_Name: BulletEnemy 3
+  m_Name: BulletEnemy Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,5 +185,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b9a765604aebc488b580c1724fbefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSize: 3
+  maxSize: 5
   expandTime: 0.3
