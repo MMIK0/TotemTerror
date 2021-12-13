@@ -9,6 +9,8 @@ public class PLayerShooting : Shoot
     public float shotCooldown = .7f, cylinderRotationPerShot = 72, reloadTime=2f;
     private float cooldown = 0, rotationAmount,reloadTimer;
     public Transform cylinder;
+    public SoundPitchRandomizer sPR;
+    public SoundPitchRandomizer sPR2;
 
     private void OnEnable()
     {
@@ -41,6 +43,8 @@ public class PLayerShooting : Shoot
                 cooldown = shotCooldown;
                 currentAmmo--;
                 rotationAmount = 0;
+                if (sPR)
+                    sPR.PlaySoundWithPitchChange(1+(0.1f*(5-currentAmmo+1)));
             }
             else if (currentAmmo <= 0)
                 Reload();
@@ -52,6 +56,8 @@ public class PLayerShooting : Shoot
         reloadTimer = reloadTime;
         currentAmmo = ammo;
         animator.SetTrigger("Reload");
+        if (sPR2)
+            sPR2.PlaySoundWithPitchChange();
     }
     
 }
