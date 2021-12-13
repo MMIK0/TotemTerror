@@ -5,14 +5,17 @@ using UnityEngine;
 public class RespawnTrigger : MonoBehaviour
 {
     public Transform spawnPoint;
-    bool died = false;
 
-
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider collider)
     {
-        if (other.gameObject == Player.instance.gameObject)
+        if (collider.gameObject == Player.instance.gameObject)
         {
-            Player.instance.transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z);
+            collider.GetComponent<Player>().enabled = false;
+            collider.transform.position = spawnPoint.position;
         }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        other.GetComponent<Player>().enabled = true;
     }
 }

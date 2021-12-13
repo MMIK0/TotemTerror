@@ -34,4 +34,9 @@ public class PooledBehaviour : MonoBehaviour
         pooledObject.transform.position = position;
         return pooledObject;
     }
+
+    public void ReturnToPoolWithMagic()
+    {
+        gameObject.SetActive(false);
+    }
 }

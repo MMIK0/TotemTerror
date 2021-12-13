@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f110228746068949b7bbf7422a269c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOnImpact: {fileID: 0}
+  spawnOnImpact: {fileID: 1573777290071737974, guid: 189eba3e8ebb45345ad5c95b9a5f2776,
+    type: 3}
   rBody: {fileID: 9164954111945348109}
   doNotDestroyOnHit: 0
   lifeTime: 20
