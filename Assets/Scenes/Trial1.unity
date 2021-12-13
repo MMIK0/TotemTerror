@@ -440,7 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e069439a12dea184790b5324b51ce9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNumber: 1
+  currentScene: 0
+  sceneNumber: 2
+  loadScene: 0
 --- !u!1 &172883288
 GameObject:
   m_ObjectHideFlags: 0
@@ -5640,6 +5642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 696492026}
+  isBossFight: 0
 --- !u!65 &1531794385
 BoxCollider:
   m_ObjectHideFlags: 0

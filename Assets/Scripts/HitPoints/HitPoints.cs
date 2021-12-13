@@ -11,7 +11,7 @@ public class HitPoints : MonoBehaviour
     public bool isPlayer;
     public UnityEvent deathEvent;
     public Damage.DamageType damageImmunity;
-    private void OnEnable()
+    private void Start()
     {
         currentHitPoints = maxHitPoints;
         if (isPlayer)

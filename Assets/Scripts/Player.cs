@@ -148,8 +148,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        transform.position = new Vector3(0f, 0f);
-        Debug.Log("We shouldve moved");
+        GetComponent<HitPoints>().deathEvent.Invoke();
     }
 
 }
