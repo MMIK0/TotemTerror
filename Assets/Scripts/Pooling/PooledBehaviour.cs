@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PooledBehaviour : MonoBehaviour
 {
@@ -20,7 +21,10 @@ public class PooledBehaviour : MonoBehaviour
     {
         OnReturnToPool.Invoke(this);
     }
-
+    private void OnLevelWasLoaded(int level)
+    {
+        gameObject.SetActive(false);
+    }
     public PooledBehaviour GetPooledObject()
     {
         Pool pool = Pool.GetOrCreatePool(this);
@@ -34,7 +38,6 @@ public class PooledBehaviour : MonoBehaviour
         pooledObject.transform.position = position;
         return pooledObject;
     }
-
     public void ReturnToPoolWithMagic()
     {
         gameObject.SetActive(false);
