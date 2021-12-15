@@ -14,6 +14,7 @@ public class Pool : MonoBehaviour
             return availablePools[poolObject.ID];
 
         GameObject newPool = new GameObject();
+        DontDestroyOnLoad(newPool);
         newPool.name = "Pool -- " + poolObject.name;
         Pool pool = newPool.AddComponent<Pool>();
         pool.pooledPrefab = poolObject;
@@ -42,7 +43,8 @@ public class Pool : MonoBehaviour
     void AddToObjectQueue(PooledBehaviour pObject)
     {
         pooledObjects.Enqueue(pObject);
-        StartCoroutine(SetPoolAsParent(pObject));
+        if(pObject && gameObject)
+            StartCoroutine(SetPoolAsParent(pObject));
     }
     IEnumerator SetPoolAsParent(PooledBehaviour pooledBehaviour)
     {

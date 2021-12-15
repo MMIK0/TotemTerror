@@ -15,9 +15,9 @@ public class Billboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isStaticBB)
+        if (!isStaticBB &&playerCam)
             transform.LookAt(playerCam.transform);
-        else
+        else if(playerCam)
             transform.rotation = playerCam.transform.rotation;
 
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0);
