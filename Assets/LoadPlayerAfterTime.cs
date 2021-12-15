@@ -28,6 +28,8 @@ public class LoadPlayerAfterTime : MonoBehaviour
     public IEnumerator LoadToMainMenu()
     {
         yield return new WaitForSeconds(15f);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene(0);
     }
 }

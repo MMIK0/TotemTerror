@@ -6,7 +6,6 @@ using TMPro;
 public class SpeedText : MonoBehaviour
 {
     TextMeshProUGUI tmp;
-    public Player player;
     public void Start()
     {
         tmp = GetComponentInChildren<TextMeshProUGUI>();
@@ -14,6 +13,6 @@ public class SpeedText : MonoBehaviour
 
     private void Update()
     {
-        tmp.text = player.moveSpeed.ToString();
+        tmp.text = Player.instance.moveSpeed.ToString();
     }
 }

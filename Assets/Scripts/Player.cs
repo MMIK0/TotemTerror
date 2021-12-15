@@ -67,16 +67,22 @@ public class Player : MonoBehaviour
         velocityY -= gravity * Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.S))
-            bunnyHops = 0;
+        {
+            ResetBunnyHops();
+            moveSpeed = speed;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && charControl.isGrounded)
         {
             isJumping = true;
             jumpTimer = 0f;
-            if (bunnyHopTimer > 0)
+            if (bunnyHopTimer > 0 && Input.GetKey(KeyCode.W))
                 bunnyHops += 1.1f;
             else
-                bunnyHops = 0;
+            {
+                moveSpeed = speed;
+                ResetBunnyHops();
+            }
         }
 
         if (isJumping)
@@ -151,4 +157,8 @@ public class Player : MonoBehaviour
         GetComponent<HitPoints>().deathEvent.Invoke();
     }
 
+    public void ResetBunnyHops()
+    {
+        bunnyHops = 0;
+    }
 }

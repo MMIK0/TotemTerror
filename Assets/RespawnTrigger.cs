@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class RespawnTrigger : MonoBehaviour
 {
-    public Transform spawnPoint;
     public bool isBossFight = false;
 
     public void OnTriggerEnter(Collider collider)
@@ -16,8 +15,9 @@ public class RespawnTrigger : MonoBehaviour
                 Player.instance.Die();
             else
             {
+                Player.instance.ResetBunnyHops();
                 collider.GetComponent<Player>().enabled = false;
-                collider.transform.position = spawnPoint.position;
+                collider.transform.position = CheckPointManager.instance.spawnPoint.transform.position;
             }
         }
     }
