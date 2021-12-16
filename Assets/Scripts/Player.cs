@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class Player : MonoBehaviour
     [Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
     Vector2 currentMouseDelta = Vector2.zero;
     Vector2 currentMouseDeltaVelo = Vector2.zero;
+
+    //Tips
+    public GameObject panel;
+    public TextMeshProUGUI tipText;
 
     public void Awake()
     {
