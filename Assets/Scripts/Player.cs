@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float gravity = -13f;
     public float jumpForce = 30f;
     public float airTime;
+    public bool movementModified = false;
     CharacterController charControl;
     [Range(0.0f, 0.5f)] float movementSmooth = 0.1f;
     Vector2 currentDir = Vector2.zero;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     float bunnyHops = 0;
     bool isJumping = false;
     bool groundState = false;
+    public bool isGrounded;
     public float moveSpeed { get; private set; }
     float maxSpeed = 20f;
 
@@ -60,13 +62,22 @@ public class Player : MonoBehaviour
 
     public void DefaultMovement()
     {
-
         Vector2 targetInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         targetInput.Normalize();
 
         currentDir = Vector2.SmoothDamp(currentDir, targetInput, ref currentDirVelocity, movementSmooth);
 
-        if (charControl.isGrounded)
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(0, -1, 0)), out hit, 1.5f))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(0, -1, 0)) * hit.distance, Color.red);
+            isGrounded = true;
+        }
+        else
+            isGrounded = false;
+
+        if (isGrounded)
             velocityY = 0f;
 
         velocityY -= gravity * Time.deltaTime;
@@ -77,7 +88,7 @@ public class Player : MonoBehaviour
             moveSpeed = speed;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && charControl.isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             isJumping = true;
             jumpTimer = 0f;
@@ -93,14 +104,17 @@ public class Player : MonoBehaviour
         if (isJumping)
         {
             velocityY = jumpForce / (jumpTimer + 0.1f);
+            if (gravity < 0)
+                velocityY = -velocityY;
             jumpTimer += Time.deltaTime;
         }
+
         if(jumpTimer > airTime)
         {
             isJumping = false;
         }
 
-        if(charControl.isGrounded != groundState && charControl.isGrounded)
+        if(isGrounded != groundState && isGrounded)
         {
             bunnyHopTimer = 0.2f;
             moveSpeed = speed;
@@ -109,19 +123,20 @@ public class Player : MonoBehaviour
         if (bunnyHopTimer > 0)
         {
             bunnyHopTimer -= Time.deltaTime;
-            if (!charControl.isGrounded)
+            if (!isGrounded)
             {
                 moveSpeed = speed + bunnyHops;
             }
         }
 
-        groundState = charControl.isGrounded;
+        groundState = isGrounded;
 
         if (moveSpeed > maxSpeed)
             moveSpeed = maxSpeed;
 
+        Debug.Log(velocityY);
         Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * moveSpeed + Vector3.up * velocityY;
-        charControl.Move(velocity *Time.deltaTime);
+        charControl.Move(velocity * Time.deltaTime);
     }
 
     void UpdateMouseLook()
